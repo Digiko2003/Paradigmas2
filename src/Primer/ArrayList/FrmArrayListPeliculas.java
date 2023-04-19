@@ -1,8 +1,14 @@
-package ArrayList;/*
+package Primer.ArrayList;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
  */
 
+
+
+/**
+ *
+ * @author Issa
+ */
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,26 +17,26 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class FrmArrayListAmigos extends JFrame {
+public class FrmArrayListPeliculas extends JFrame {
     DefaultListModel modelo = new DefaultListModel();
-    ArrayList <String> listaAmigos = new ArrayList<>();
+    ArrayList <String> listaPeliculas = new ArrayList<>();
 
-    // Se declara el constructor en el formulario
-    public FrmArrayListAmigos() {
+    //Peliculas
+    public FrmArrayListPeliculas() {
         initComponents();
-        listaAmigos.add("Alberto");
-        listaAmigos.add("María");
-        listaAmigos.add("Antonio");
-        listaAmigos.add("Juan");
-        listaAmigos.add("Rosario");
-        llenarJListAmigos();
+        listaPeliculas.add("Alberto");
+        listaPeliculas.add("María");
+        listaPeliculas.add("Antonio");
+        listaPeliculas.add("Juan");
+        listaPeliculas.add("Rosario");
+        llenarJListPeliculas();
     }
 
     // Metodos que ocupará el formulario
-    public void llenarJListAmigos() {
+    public void llenarJListPeliculas() {
         modelo.removeAllElements();
-        for (int i = 0; i < listaAmigos.size(); i++) {
-            modelo.addElement(listaAmigos.get(i));
+        for (int i = 0; i < listaPeliculas.size(); i++) {
+            modelo.addElement(listaPeliculas.get(i));
         }
     }
 
@@ -46,22 +52,22 @@ public class FrmArrayListAmigos extends JFrame {
         setLayout(new GridLayout(2,1,20,20));
         // Caracteristicas del titulo
         lblTitulo.setFont(new Font("Dialog", 0, 48));
-        lblTitulo.setText("Amigos");
+        lblTitulo.setText("Peliculas");
         lblTitulo.setForeground(Color.WHITE);
         lblTitulo.setPreferredSize(new Dimension(300,60));
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         add(lblTitulo);
 
-        JListAmigos = new JList <>();
-        JListAmigos.setPreferredSize(new Dimension(60,30));
-        JListAmigos.setVisibleRowCount(5); // 5 filas
-        JListAmigos.setModel(modelo);
+        JList<Object> JListPeliculas = new JList<>();
+        JListPeliculas.setPreferredSize(new Dimension(60,30));
+        JListPeliculas.setVisibleRowCount(5); // 5 filas
+        JListPeliculas.setModel(modelo);
 
         panelParteInferior = new JPanel();
         panelParteInferior.setBackground(Color.black);
         panelParteInferior.setLayout(new GridLayout(1,2,20,20));
         add(panelParteInferior);
-        panelParteInferior.add(add(new JScrollPane(JListAmigos)));
+        panelParteInferior.add(add(new JScrollPane(JListPeliculas)));
 
         // Panel de los botones
         panelBotones = new JPanel();
@@ -117,20 +123,20 @@ public class FrmArrayListAmigos extends JFrame {
 
     // Listado de eventos
     public void btnAgregarActionPerformed(ActionEvent event) {
-        String nombreAmigo = JOptionPane.showInputDialog("Escribe el nombre: ");
-        if (nombreAmigo.equals("") || nombreAmigo == null) {
+        String nombrePelicula = JOptionPane.showInputDialog("Escribe la pelicula: ");
+        if (nombrePelicula.equals("") || nombrePelicula == null) {
             return;
         }
-        listaAmigos.add(nombreAmigo);
-        llenarJListAmigos();
+        listaPeliculas.add(nombrePelicula);
+        llenarJListPeliculas();
     }
 
     public void btnBuscarActionPerformed(ActionEvent event) {
-        String nombreAmigo = JOptionPane.showInputDialog("Escribe el nombre a buscar: ");
-        if (nombreAmigo.equals("") || nombreAmigo == null) {
+        String nombrePelicula = JOptionPane.showInputDialog("Escribe la pelicula a buscar: ");
+        if (nombrePelicula.equals("") || nombrePelicula == null) {
             return;
         }
-        if (listaAmigos.contains(nombreAmigo)) {
+        if (listaPeliculas.contains(nombrePelicula)) {
             JOptionPane.showMessageDialog(this, "El amigo si se encuentra");
         } else {
             JOptionPane.showMessageDialog(this, "El amigo no se encuentra");
@@ -138,18 +144,18 @@ public class FrmArrayListAmigos extends JFrame {
     }
 
     public void btnBorrarActionPerformed(ActionEvent event) {
-        String nombreAmigo = JOptionPane.showInputDialog("Escribe el nombre a borrar: ");
-        if (nombreAmigo.equals("") || nombreAmigo == null) {
+        String nombrePelicula = JOptionPane.showInputDialog("Escribe la pelicula a borrar: ");
+        if (nombrePelicula.equals("") || nombrePelicula == null) {
             return;
         }
-        Iterator<String> iterador = listaAmigos.iterator();
+        Iterator<String> iterador = listaPeliculas.iterator();
         while (iterador.hasNext()) {
-            if (nombreAmigo.equals(iterador.next())) {
+            if (nombrePelicula.equals(iterador.next())) {
                 iterador.remove();
-                JOptionPane.showMessageDialog(this, "El amigo se ha eliminado");
+                JOptionPane.showMessageDialog(this, "La pelicula se ha eliminado");
             }
         }
-        llenarJListAmigos();
+        llenarJListPeliculas();
     }
 
     public void btnSalirActionPerformed(ActionEvent event) {
@@ -158,7 +164,7 @@ public class FrmArrayListAmigos extends JFrame {
 
     // metodo main
     public static void main(String[] args) {
-        new FrmArrayListAmigos().setVisible(true);
+        new FrmArrayListPeliculas().setVisible(true);
     }
 
     // controles del formulario
