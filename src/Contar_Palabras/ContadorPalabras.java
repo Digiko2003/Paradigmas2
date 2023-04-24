@@ -1,3 +1,4 @@
+//By Diego Arturo Enriquez Mercado
 package Contar_Palabras;
 
 import javax.swing.*;
